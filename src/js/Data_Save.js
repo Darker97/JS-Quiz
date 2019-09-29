@@ -1,15 +1,24 @@
-function Cookie_Save(params) {
-    
+function Cookie_Save(name, points) {
+  let cookie = document.cookie
+  cookie = cookie + name + ',' + points + ';'
 }
 
 function Cookie_Load(params) {
-    
-}
+  let arr = []
 
-function Cookie_Resolve(params) {
-    
-}
+  if (document.cookie.length === 0) {
+    arr.push('No one has played this game yet :/')
+    return arr
+  }
+  let cookie = document.cookie
+  cookie = cookie.split(';')
+  for (let i = 0; i < cookie.length; i++) {
+    let temp = new Object()
 
-function Cookie_Create(params) {
-    
+    const string = cookie[i].split(',')
+    temp.name = string[0]
+    temp.points = string[1]
+
+    arr.push(temp)
+  }
 }
