@@ -22,11 +22,3 @@ function Cookie_Load(params) {
     arr.push(temp)
   }
 }
-
-function Cookie_Resolve(params) {
-    
-}
-
-function Cookie_Create(params) {
-    
-}
