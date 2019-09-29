@@ -12,12 +12,19 @@
         "message": "You got your question! Now send me the answer via HTTP POST to the nextURL in JSON-format"
     }
 */
-function GET(params) {
-    
-}
+function GET (data, link) {
+  let request = new XMLHttpRequest()
+  request.withCredentials = true
 
-function Resolve(params) {
-    
+  request.addEventListener("readystatechange", function () {
+    if (this.readyState === this.DONE) {
+      let temp = Resolve(this.responseText)
+      return (temp)
+    }
+  })
+
+  request.open('GET', link)
+  request.send(data)
 }
 
 /* 
@@ -25,6 +32,25 @@ function Resolve(params) {
         "answer": 2
     }   
 */
-function POST(params) {
+function POST(data, link) {
+  let data = JSON.stringify(data)
+    
+  var request = new XMLHttpRequest();
+  request.withCredentials = true;
+ 
+  request.addEventListener("readystatechange", function () {
+    if (this.readyState === this.DONE) {
+      let temp = Resolve(this.responseText)
+      return (temp)
+    }
+  })
 
+  request.open("POST", link)
+  request.setRequestHeader("content-type", "application/json")
+
+  request.send(data)
+}
+
+function Resolve(params) {
+    
 }
