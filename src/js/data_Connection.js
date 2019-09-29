@@ -52,5 +52,7 @@ function POST(data, link) {
 }
 
 function Resolve(params) {
-    
+    let Objekt = new Objekt()
+    Objekt = JSON.parse(params)
+    return Objekt
 }
