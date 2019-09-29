@@ -1,5 +1,6 @@
 function Cookie_Save(name, points) {
-
+  let cookie = document.cookie
+  cookie = cookie + name + ',' + points + ';'
 }
 
 function Cookie_Load(params) {
