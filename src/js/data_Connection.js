@@ -18,7 +18,7 @@ function GET (data, link) {
 
   request.addEventListener("readystatechange", function () {
     if (this.readyState === this.DONE) {
-      let temp = Resolve(this.responseText)
+      const temp = Resolve(this.responseText)
       return (temp)
     }
   })
@@ -32,15 +32,15 @@ function GET (data, link) {
         "answer": 2
     }   
 */
-function POST(data, link) {
-  let data = JSON.stringify(data)
+function POST(Input, link) {
+  const data = JSON.stringify(Input)
     
-  var request = new XMLHttpRequest();
-  request.withCredentials = true;
+  let request = new XMLHttpRequest()
+  request.withCredentials = true
  
   request.addEventListener("readystatechange", function () {
     if (this.readyState === this.DONE) {
-      let temp = Resolve(this.responseText)
+      const temp = Resolve(this.responseText)
       return (temp)
     }
   })
@@ -52,7 +52,7 @@ function POST(data, link) {
 }
 
 function Resolve(params) {
-    let Objekt = new Objekt()
-    Objekt = JSON.parse(params)
-    return Objekt
+  let Objekt = new Object()
+  Objekt = JSON.parse(params)
+  return Objekt
 }
