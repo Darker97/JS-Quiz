@@ -18,8 +18,7 @@ function GET (data, link) {
 
   request.addEventListener("readystatechange", function () {
     if (this.readyState === this.DONE) {
-      const temp = Resolve(this.responseText)
-      return (temp)
+      return (Resolve(this.responseText))
     }
   })
 
@@ -34,19 +33,18 @@ function GET (data, link) {
 */
 function POST(Input, link) {
   const data = JSON.stringify(Input)
-    
+
   let request = new XMLHttpRequest()
   request.withCredentials = true
- 
+
   request.addEventListener("readystatechange", function () {
     if (this.readyState === this.DONE) {
-      const temp = Resolve(this.responseText)
-      return (temp)
+      return (Resolve(this.responseText))
     }
   })
 
-  request.open("POST", link)
-  request.setRequestHeader("content-type", "application/json")
+  request.open('POST', link)
+  request.setRequestHeader('content-type', 'application/json')
 
   request.send(data)
 }
