@@ -3,6 +3,5 @@
     -total Time
 */
 
-function Person(name) {
-  this.name = name
+function Person() {
 }

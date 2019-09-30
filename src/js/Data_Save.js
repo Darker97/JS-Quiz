@@ -1,9 +1,9 @@
-function Cookie_Save(name, points) {
+export function Cookie_Save(name, points) {
   let cookie = document.cookie
   cookie = cookie + name + ',' + points + ';'
 }
 
-function Cookie_Load(params) {
+export function Cookie_Load(params) {
   let arr = []
 
   if (document.cookie.length === 0) {
