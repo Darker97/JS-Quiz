@@ -1,32 +1,38 @@
-import * as UI from 'UI'
-import * as person from 'Person'
-
-/* -------------------------- */
-start()
+import * as UI from './UI.js'
+import * as person from './Person.js'
 
 /* -------------------------- */
 var Workingobjekt = UI.view()
 var User
 /* -------------------------- */
 
+/* -------------------------- */
+start()
+/* -------------------------- */
+
 function start () {
+  document.body.innerHTML = ''
   document.body.appendChild(Workingobjekt)
-  User = person(Phase1(), 0)
-  Phase2()
-  Phase3()
-  Phase4()
+  Phase1()
 }
 
 /**
  * Login and Username
  */
 function Phase1 () {
-  Workingobjekt.UI.appendChild(UI.label('Welckome to the Game, please enter your username:'))
+  Workingobjekt.appendChild(UI.label('Welckome to the Game, please enter your username:'))
   const input = UI.input('UserName')
-  Workingobjekt.UI.appendChild(input)
+  const button = UI.button('Enter')
 
-  input.addactionlistener('pressed', function () {
-    return input.value
+  Workingobjekt.appendChild(input)
+  Workingobjekt.appendChild(button)
+  button.addEventListener('click', function () {
+    User = new person.Person(input.value, 0)
+    Phase2()
+  })
+  input.addEventListener('submit', function () {
+    User = new person.Person(input.value, 0)
+    Phase2()
   })
 }
 
@@ -34,7 +40,21 @@ function Phase1 () {
  * Main Menu and Scoreboard
  */
 function Phase2 () {
+  Workingobjekt.innerHTML = ''
+  Workingobjekt.appendChild(UI.headline('Main Menu'))
+  Workingobjekt.appendChild(UI.headline('Hello ' + User.name))
+  Workingobjekt.appendChild(UI.label('Welcome to the game :D \n Lets start the quiz!'))
 
+  let button = UI.button('New Game')
+  Workingobjekt.appendChild(button)
+
+  Workingobjekt.appendChild(UI.line())
+
+  Workingobjekt.appendChild(UI.scoreboard())
+
+  button.addEventListener('click', function () {
+    Phase3()
+  })
 }
 
 /**
@@ -42,7 +62,7 @@ function Phase2 () {
  */
 
 function Phase3 () {
-
+  Workingobjekt.innerHTML = ''
 }
 
 /**
@@ -50,5 +70,4 @@ function Phase3 () {
  * Return to Phase 2 or 3 for a new try
  */
 function Phase4 () {
-
 }
