@@ -16,7 +16,10 @@ export function label (text) {
   temp.innerText = text
   return temp
 }
-
+/**
+ * builds an Input
+ * @param {String} name
+ */
 export function input (name) {
   const temp = document.createElement('input')
   temp.type = 'text'
