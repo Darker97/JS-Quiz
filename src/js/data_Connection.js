@@ -1,4 +1,4 @@
-/* 
+/*
     {
         "id": 1,
         "question": "What is 1+1?",
@@ -26,10 +26,10 @@ export function GET (data, link) {
   request.send(data)
 }
 
-/* 
+/*
     {
         "answer": 2
-    }   
+    }
 */
 export function POST (Input, link) {
   const data = JSON.stringify(Input)
