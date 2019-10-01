@@ -1,11 +1,9 @@
-/*
-    -Nickname
-    -total Time
-*/
-
-function person() {
-  let data = new Object()
-
-  return person
+/**
+ * Konstruktor for the user
+ * @param {*} username 
+ * @param {*} userscore 
+ */
+export function Person(username, userscore) {
+  let this.name = username
+  let this.score = userscore
 }
-

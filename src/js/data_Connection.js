@@ -12,14 +12,13 @@
         "message": "You got your question! Now send me the answer via HTTP POST to the nextURL in JSON-format"
     }
 */
-function GET (data, link) {
+export function GET (data, link) {
   let request = new XMLHttpRequest()
   request.withCredentials = true
 
-  request.addEventListener("readystatechange", function () {
+  request.addEventListener('stateChanged', function () {
     if (this.readyState === this.DONE) {
-      const temp = Resolve(this.responseText)
-      return (temp)
+      return (Resolve(this.responseText))
     }
   })
 
@@ -32,26 +31,25 @@ function GET (data, link) {
         "answer": 2
     }   
 */
-function POST(Input, link) {
+export function POST (Input, link) {
   const data = JSON.stringify(Input)
-    
+
   let request = new XMLHttpRequest()
   request.withCredentials = true
- 
-  request.addEventListener("readystatechange", function () {
+
+  request.addEventListener('readystatechange', function () {
     if (this.readyState === this.DONE) {
-      const temp = Resolve(this.responseText)
-      return (temp)
+      return (Resolve(this.responseText))
     }
   })
 
-  request.open("POST", link)
-  request.setRequestHeader("content-type", "application/json")
+  request.open('POST', link)
+  request.setRequestHeader('content-type', 'application/json')
 
   request.send(data)
 }
 
-function Resolve(params) {
+function Resolve (params) {
   let Objekt = new Object()
   Objekt = JSON.parse(params)
   return Objekt

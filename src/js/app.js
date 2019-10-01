@@ -1,27 +1,46 @@
+import * as UI from 'UI'
+
+/* -------------------------- */
 start()
 
-/* -------------------------- */ 
+/* -------------------------- */
+var Workingobjekt = UI.view()
+var User
+/* -------------------------- */
 
 function start() {
-  
+  Phase1()
+  Phase2()
+  Phase3()
+  Phase4()
 }
 
+/**
+ * Login and Username
+ */
 function Phase1() {
-    // login
+
 }
 
+/**
+ * Main Menu and Scoreboard
+ */
 function Phase2() {
-    /* Main Menu 
-        - Scoreboard
-        - start the Game  
-    */
+
 }
+
+/**
+ * The Game itself
+ */
 
 function Phase3() {
-    // Game
+
 }
 
+/**
+ * Game Over 
+ * Return to Phase 2 or 3 for a new try
+ */
 function Phase4() {
-    // Game Over
-    // return to phase 2 or 3
+
 }
