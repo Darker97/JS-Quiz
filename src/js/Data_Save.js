@@ -3,7 +3,10 @@ export function Cookie_Save(name, points) {
   cookie = cookie + name + ',' + points + ';'
 }
 
-export function Cookie_Load(params) {
+/**
+ * returns an array with Objects, including the data from the cookie
+ */
+export function Cookie_Load() {
   let arr = []
 
   if (document.cookie.length === 0) {
@@ -21,4 +24,5 @@ export function Cookie_Load(params) {
 
     arr.push(temp)
   }
+  return arr
 }
