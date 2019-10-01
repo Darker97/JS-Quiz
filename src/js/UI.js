@@ -1,4 +1,4 @@
-import * as connection from 'data_connection.js'
+import * as cookie from './Data_Save.js'
 
 /**
  * returns a view of type artikel
@@ -24,6 +24,15 @@ export function button (name) {
  */
 export function label (text) {
   const temp = document.createElement('p')
+  temp.innerText = text
+  return temp
+}
+/**
+ * returns a headline with the text
+ * @param {String} text
+ */
+export function headline (text) {
+  const temp = document.createElement('h2')
   temp.innerText = text
   return temp
 }
@@ -72,19 +81,31 @@ export function timerUpdate (time) {
   // TODO: Timer UI update
 }
 
+/**
+ * returns the scoreboard elemnt with the ID scoreboard
+ */
 export function scoreboard () {
-  let arr = connection.Cookie_Load()
-  arr = []
-  const list = document.createElement('li')
+  let arr = cookie.cookieLoad()
+
+  let list = document.createElement('li')
+
+  if (arr.length === 0) {
+    list.appendChild(label('No one has played this game yet 🙁'))
+  }
 
   for (let i = 0; i < arr.length; i++) {
-    var temp = document.createElement('ol') 
+    var temp = document.createElement('ol')
     temp.innerText = arr[i].name + '      ' + arr[i].points
+    list.appendChild(temp)
   }
   list.id = 'scoreboard'
   return list
 }
 
-export function reset () {
-  this.innerhtml = ''
+/**
+ * inserts a line into your code
+ */
+export function line () {
+  const temp = document.createElement('hr')
+  return temp
 }
