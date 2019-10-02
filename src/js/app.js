@@ -66,43 +66,49 @@ function Phase3 () {
   let points = 0
   let questionObjekt = new Object()
   questionObjekt.nextURL = 'http://vhost3.lnu.se:20080/question/1'
-  while (true) {
-    // reset Page
-    Workingobjekt.innerHTML = ''
-    // Get next question
-    questionObjekt = connect.GET(questionObjekt.nextURL)
-
-    questionObjekt = questionObjekt.resolve
-
-    setTimeout(function () {
-      console.log(questionObjekt.toString)
+  // reset Page
+  Workingobjekt.innerHTML = ''
+  fetch(questionObjekt.nextURL)
+    .then((resp) => resp.json())
+    .then(function (resp) {
+      console.log(resp)
+      questionObjekt = resp
+    })
+    .then(function () {
       if ('answers' in questionObjekt !== true) {
         Workingobjekt.appendChild(UI.label(questionObjekt.question))
         let input = UI.input('Your answer')
         Workingobjekt.appendChild(input)
 
-        input.addEventListener('submit', function () {
-          let answer = connect.POST(input.value, questionObjekt.nextURL)
-          if (answer.message === 'Correct answer!') {
-            // TODO: add Timer - add left time
+        input.addEventListener('click', function () {
+        // ___________________________ => start of answer
+          let temp = new Object()
+          temp.answer = input.value
+
+          let fetchData = {
+            method: 'POST',
+            body: JSON.stringify(temp),
+            headers: {
+              'Content-Type': 'application/json'
+            }
           }
+          fetch(questionObjekt.nextURL, fetchData)
+            .then((resp) => resp.json())
+            .then(function (resp) {
+              console.log(resp)
+            })
         })
+      // ___________________________ => end of answer
       } else {
         let input = UI.multipleChoice(questionObjekt.question, questionObjekt.alternatives)
 
         Workingobjekt.appendChild(input)
-        input.addEventListener('submit', function () {
-          let answer = connect.POST(input.value, questionObjekt.nextURL)
-          if (answer.message === 'Correct answer!') {
-            // TODO: add Timer - add left time
-          }
+        input.addEventListener('click', function () {
+          // TODO: WHAT TO DO WHEN THIS WORKS?
         })
       }
-    }, 5000)
-    // End of the Game
-    User.score = points
-    break
-  }
+    })
+  // End of the Game
   Phase4()
 }
 
