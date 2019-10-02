@@ -1,5 +1,6 @@
 import * as UI from './UI.js'
 import * as person from './Person.js'
+import * as connect from './data_Connection.js'
 
 /* -------------------------- */
 var Workingobjekt = UI.view()
@@ -62,7 +63,47 @@ function Phase2 () {
  */
 
 function Phase3 () {
-  Workingobjekt.innerHTML = ''
+  let points = 0
+  let questionObjekt = new Object()
+  questionObjekt.nextURL = 'http://vhost3.lnu.se:20080/question/1'
+  while (true) {
+    // reset Page
+    Workingobjekt.innerHTML = ''
+    // Get next question
+    questionObjekt = connect.GET(questionObjekt.nextURL)
+
+    questionObjekt = questionObjekt.resolve
+
+    setTimeout(function () {
+      console.log(questionObjekt.toString)
+      if ('answers' in questionObjekt !== true) {
+        Workingobjekt.appendChild(UI.label(questionObjekt.question))
+        let input = UI.input('Your answer')
+        Workingobjekt.appendChild(input)
+
+        input.addEventListener('submit', function () {
+          let answer = connect.POST(input.value, questionObjekt.nextURL)
+          if (answer.message === 'Correct answer!') {
+            // TODO: add Timer - add left time
+          }
+        })
+      } else {
+        let input = UI.multipleChoice(questionObjekt.question, questionObjekt.alternatives)
+
+        Workingobjekt.appendChild(input)
+        input.addEventListener('submit', function () {
+          let answer = connect.POST(input.value, questionObjekt.nextURL)
+          if (answer.message === 'Correct answer!') {
+            // TODO: add Timer - add left time
+          }
+        })
+      }
+    }, 5000)
+    // End of the Game
+    User.score = points
+    break
+  }
+  Phase4()
 }
 
 /**

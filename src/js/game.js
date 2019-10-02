@@ -1,4 +1,4 @@
-export function gameStart (user) {
+export function gameStart () {
 
 }
 
