@@ -12,18 +12,16 @@
         "message": "You got your question! Now send me the answer via HTTP POST to the nextURL in JSON-format"
     }
 */
-export function GET (data, link) {
-  let request = new XMLHttpRequest()
-  request.withCredentials = true
-
-  request.addEventListener('stateChanged', function () {
-    if (this.readyState === this.DONE) {
-      return (Resolve(this.responseText))
-    }
-  })
-
-  request.open('GET', link)
-  request.send(data)
+export async function GET (url) {
+  fetch(url) // Call the fetch function passing the url of the API as a parameter
+    .then((resp) => resp.json())
+    .then(function (resp) {
+      console.log(resp)
+      return (resp)
+    })
+    .catch(function () {
+      // Error handeling
+    })
 }
 
 /*
@@ -31,26 +29,18 @@ export function GET (data, link) {
         "answer": 2
     }
 */
-export function POST (Input, link) {
-  const data = JSON.stringify(Input)
-
-  let request = new XMLHttpRequest()
-  request.withCredentials = true
-
-  request.addEventListener('readystatechange', function () {
-    if (this.readyState === this.DONE) {
-      return (Resolve(this.responseText))
-    }
-  })
-
-  request.open('POST', link)
-  request.setRequestHeader('content-type', 'application/json')
-
-  request.send(data)
-}
-
-function Resolve (params) {
-  let Objekt = new Object()
-  Objekt = JSON.parse(params)
-  return Objekt
+export async function POST (input, link) {
+  let data = input
+  // Parameter
+  let fetchData = {
+    method: 'POST',
+    body: data,
+    headers: new Headers()
+  }
+  fetch(link, fetchData)
+    .then((resp) => resp.json())
+    .then(function (resp) {
+      console.log(resp)
+      return (resp)
+    })
 }
