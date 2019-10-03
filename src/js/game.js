@@ -1,7 +1,7 @@
-export function Game_start(user) {
+export function gameStart () {
 
 }
 
-export function Game_Stop() {
+export function GameStop () {
 
 }
