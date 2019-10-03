@@ -52,13 +52,13 @@ export function input (name) {
  * @param {String} question
  * @param {Array with Strings} answers
  */
-export function multipleChoice (question, answers) {
-  const arr = answers
+export function multipleChoice (answers) {
+  const arr = Object.values(answers)
   const temp = document.createElement('select')
 
   for (let i = 0; i < arr.length; i++) {
     const input = document.createElement('option')
-    input.value = arr[i]
+    input.value = 'alt' + (i + 1).toString()
     input.text = arr[i]
 
     temp.appendChild(input)
