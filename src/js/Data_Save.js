@@ -1,4 +1,4 @@
-export function Cookie_Save(name, points) {
+export function cookieSave (name, points) {
   let cookie = document.cookie
   cookie = cookie + name + ',' + points + ';'
 }
@@ -6,11 +6,10 @@ export function Cookie_Save(name, points) {
 /**
  * returns an array with Objects, including the data from the cookie
  */
-export function Cookie_Load() {
+export function cookieLoad () {
   let arr = []
 
   if (document.cookie.length === 0) {
-    arr.push('No one has played this game yet :/')
     return arr
   }
   let cookie = document.cookie
