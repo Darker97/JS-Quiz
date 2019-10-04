@@ -71,7 +71,6 @@ export function multipleChoice (answers) {
  * @param {String} time
  */
 export function timerNew (time) {
-  // TODO: Timer UI
   let temp = document.createElement('p')
   temp.id = 'timer'
   temp.innerText = time
@@ -81,9 +80,8 @@ export function timerNew (time) {
  * updates the timer to the given Time
  * @param {String} time
  */
-export function timerUpdate (time) {
-  // TODO: Timer UI update
-  this.innerText = time
+export function timerUpdate (time, timerObject) {
+  timerObject.innerText = time
 }
 
 /**
