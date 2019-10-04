@@ -112,14 +112,17 @@ function Phase3 () {
 
               // answer is wrong, continue to finishedFail
               if (resp.message === 'Wrong answer! :(') {
+                TimerStop()
                 finishedFail()
                 return
               }
               // answer is last, continue to finishedSucces
               if (resp.message === 'Correct answer!' && typeof resp.nextURL === 'undefined') {
                 finishedSucces()
+                User.score = User.score + TimerStop()
                 return
               }
+              User.score = User.score + TimerStop()
               questionObjekt = resp
               Phase3()
             })
@@ -135,7 +138,6 @@ function Phase3 () {
 
         // Button is clicked, we continue
         button.addEventListener('click', function () {
-
           // ___________________________ => start of answer
           let temp = new Object()
           temp.answer = input.value
@@ -154,15 +156,17 @@ function Phase3 () {
 
               // answer is wrong, continue to finishedFail
               if (resp.message === 'Wrong answer! :(') {
-                Timer.TimerStop()
+                TimerStop()
                 finishedFail()
                 return
               }
               // answer is last, continue to finishedSucces
               if (resp.message === 'Correct answer!' && typeof resp.nextURL === 'undefined') {
                 finishedSucces()
+                User.score = User.score + TimerStop()
                 return
               }
+              User.score = User.score + TimerStop()
               questionObjekt = resp
               Phase3()
             })
@@ -202,12 +206,13 @@ export function finishedFail () {
  * Game End
  * score is saved and you can play the next game
  */
-function finishedSucces() {
+function finishedSucces () {
   // reset Page
   Workingobjekt.innerHTML = ''
   Workingobjekt.appendChild(UI.headline('you did it 🥳'))
   Workingobjekt.appendChild(UI.label('Your score is: ' + User.score))
   cookieSave(User.name, User.score)
+
   Workingobjekt.appendChild(UI.label('Wanna play again?'))
   let buttonPlay = UI.button('Play again 😎')
   let buttonMenu = UI.button('Main Menu 🖥')
