@@ -1,4 +1,5 @@
 import { finishedFail } from './app.js'
+import { timerUpdate } from './UI.js'
 
 var timerAcctive = false
 var counter = 20
@@ -7,26 +8,35 @@ var counter = 20
  * starts a timer
  * @param {UI-Timer} TimerObject
  */
-export function Timer (TimerObject) {
+export function Timer (ObjectTimer) {
   timerAcctive = true
-  counter = 20
-  TimerStart(TimerObject)
+  TimerObject = ObjectTimer
+  counter = 21
+  TimerStart()
 }
 
-function TimerStart (TimerObject) {
-  while (timerAcctive === true) {
-    timerAcctive = true
-    setInterval(function () {
-      counter = counter - 1
-      TimerObject.timerUpdate(counter)
-    }, 1000)
-    if (counter < 0) {
+let TimerObject
+let Timeout
+
+/**
+ * Will get the TimerObject and control the timer.
+ * @param {UI Object} TimerObject
+ */
+function TimerStart () {
+  if (timerAcctive === true) {
+    if (counter === 0) {
+      timerAcctive = false
       finishedFail()
+      return
     }
+    counter = counter - 1
+    timerUpdate(counter, TimerObject)
+    Timeout = setTimeout(TimerStart, 1000)
   }
 }
 
 export function TimerStop () {
   timerAcctive = false
+  clearTimeout(Timeout)
   return counter
 }
