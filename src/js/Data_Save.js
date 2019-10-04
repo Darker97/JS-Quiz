@@ -7,7 +7,7 @@ export function cookieSave (name, points) {
   temp.points = points
 
   cookie.push(temp)
-  cookie.sort(function (a, b) { return a.points - b.points })
+  cookie.sort(function (a, b) { return b.points - a.points })
 
   if (cookie.length > 5) {
     cookie.pop()
