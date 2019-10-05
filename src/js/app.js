@@ -14,8 +14,9 @@ start()
 /* -------------------------- */
 
 function start () {
-  document.body.innerHTML = ''
+  // document.body.innerHTML = ''
   document.body.appendChild(Workingobjekt)
+  document.body.appendChild(UI.footer())
   Phase1()
 }
 
@@ -23,7 +24,7 @@ function start () {
  * Login and Username
  */
 function Phase1 () {
-  Workingobjekt.appendChild(UI.label('Welckome to the Game, please enter your username:'))
+  Workingobjekt.appendChild(UI.label('Welcome to the Game, please enter your username:'))
   const input = UI.input('UserName')
   const button = UI.button('Enter')
 
@@ -45,7 +46,7 @@ function Phase1 () {
 function Phase2 () {
   Workingobjekt.innerHTML = ''
   Workingobjekt.appendChild(UI.headline('Main Menu'))
-  Workingobjekt.appendChild(UI.headline('Hello ' + User.name))
+  Workingobjekt.appendChild(UI.headline3('Hello ' + User.name))
   Workingobjekt.appendChild(UI.label('Welcome to the game :D \n Lets start the quiz!'))
 
   let button = UI.button('New Game')
@@ -53,6 +54,7 @@ function Phase2 () {
 
   Workingobjekt.appendChild(UI.line())
 
+  Workingobjekt.appendChild(UI.headline3('Scoreboard'))
   Workingobjekt.appendChild(UI.scoreboard())
 
   button.addEventListener('click', function () {

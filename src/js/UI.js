@@ -37,6 +37,16 @@ export function headline (text) {
   return temp
 }
 /**
+ * returns a headline3 with the text
+ * @param {String} text
+ */
+export function headline3 (text) {
+  const temp = document.createElement('h3')
+  temp.innerText = text
+  return temp
+}
+
+/**
  * builds an Input
  * @param {String} name
  */
@@ -90,15 +100,15 @@ export function timerUpdate (time, timerObject) {
 export function scoreboard () {
   let arr = cookie.cookieLoad()
 
-  let list = document.createElement('li')
+  let list = document.createElement('ol')
 
   if (arr.length === 0) {
     list.appendChild(label('No one has played this game yet 🙁'))
   }
 
   for (let i = 0; i < arr.length; i++) {
-    var temp = document.createElement('ol')
-    temp.innerText = arr[i].name + '      ' + arr[i].points
+    var temp = document.createElement('li')
+    temp.innerText = arr[i].name + ' => ' + arr[i].points + ' Points'
     list.appendChild(temp)
   }
   list.id = 'scoreboard'
@@ -110,5 +120,15 @@ export function scoreboard () {
  */
 export function line () {
   const temp = document.createElement('hr')
+  return temp
+}
+
+/**
+ * footer
+ */
+export function footer() {
+  let temp = document.createElement('footer')
+  temp.appendChild(headline('Made with 🖥 and ❤️'))
+  temp.appendChild(label('Always Happy Coding'))
   return temp
 }
