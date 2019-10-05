@@ -1,0 +1,57 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url('../image/Background.JPG');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+}
+
+body h1 {
+    font-size: 36px;
+    line-height: 17px;
+    letter-spacing: -0.002em;
+    font-weight: 900;
+    font-style: normal;
+}
+
+body button {
+    font-weight: 696;
+    letter-spacing: 0.142em;
+    line-height: 19px;
+}
+
+#timer {
+    background-color: rgba(250, 185, 169, 0.842);
+    border-style: solid;
+    border-color: black;
+    max-width: 80px;
+    height: auto;
+    text-align: center;
+    border-radius: 25px;
+}
+
+#scoreboard {
+    background-color: rgb(172, 172, 172, 0.6);
+    max-width: 500px;
+    border-radius: 25px;
+    line-height: 27px;
+}
+
+#scoreboard li {
+    background-color: #d3d3d3b5;
+}
+
+
+footer{
+    text-align: center;
+    background-color: rgba(222, 234, 247, 0.37);
+    font-size: 12px;
+    height: 80px;
+    font-style: sans;
+    width: 99%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    bottom: 0;
+    position: fixed;
+    font: comic;
+}
