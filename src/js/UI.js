@@ -81,7 +81,7 @@ export function multipleChoice (answers) {
  * @param {String} time
  */
 export function timerNew (time) {
-  let temp = document.createElement('p')
+  const temp = document.createElement('p')
   temp.id = 'timer'
   temp.innerText = time
   return temp
@@ -98,9 +98,9 @@ export function timerUpdate (time, timerObject) {
  * returns the scoreboard elemnt with the ID scoreboard
  */
 export function scoreboard () {
-  let arr = cookie.cookieLoad()
+  const arr = cookie.cookieLoad()
 
-  let list = document.createElement('ol')
+  const list = document.createElement('ol')
 
   if (arr.length === 0) {
     list.appendChild(label('No one has played this game yet 🙁'))
@@ -126,8 +126,8 @@ export function line () {
 /**
  * footer
  */
-export function footer() {
-  let temp = document.createElement('footer')
+export function footer () {
+  const temp = document.createElement('footer')
   temp.appendChild(headline('Made with 🖥 and ❤️'))
   temp.appendChild(label('Always Happy Coding'))
   return temp

@@ -49,7 +49,7 @@ function Phase2 () {
   Workingobjekt.appendChild(UI.headline3('Hello ' + User.name))
   Workingobjekt.appendChild(UI.label('Welcome to the game :D \n Lets start the quiz!'))
 
-  let button = UI.button('New Game')
+  const button = UI.button('New Game')
   Workingobjekt.appendChild(button)
 
   Workingobjekt.appendChild(UI.line())
@@ -81,26 +81,25 @@ function Phase3 () {
       // Just a simple question?
 
       // Start the Timer
-      let temp = UI.timerNew('20')
+      const temp = UI.timerNew('20')
       Workingobjekt.appendChild(temp)
       Timer(temp)
 
       if ('alternatives' in questionObjekt !== true) {
         // Build the Webpage
         Workingobjekt.appendChild(UI.label(questionObjekt.question))
-        let input = UI.input('Your answer')
+        const input = UI.input('Your answer')
         Workingobjekt.appendChild(input)
-        let button = UI.button('send')
+        const button = UI.button('send')
         Workingobjekt.appendChild(button)
 
         // Button is clicked, we continue
         button.addEventListener('click', function () {
-
           // ___________________________ => start of answer
-          let temp = new Object()
+          const temp = new Object()
           temp.answer = input.value
 
-          let fetchData = {
+          const fetchData = {
             method: 'POST',
             body: JSON.stringify(temp),
             headers: {
@@ -132,19 +131,19 @@ function Phase3 () {
       } else {
         // Multiple choice
         Workingobjekt.appendChild(UI.label(questionObjekt.question))
-        let input = UI.multipleChoice(questionObjekt.alternatives)
+        const input = UI.multipleChoice(questionObjekt.alternatives)
 
         Workingobjekt.appendChild(input)
-        let button = UI.button('send')
+        const button = UI.button('send')
         Workingobjekt.appendChild(button)
 
         // Button is clicked, we continue
         button.addEventListener('click', function () {
           // ___________________________ => start of answer
-          let temp = new Object()
+          const temp = new Object()
           temp.answer = input.value
 
-          let fetchData = {
+          const fetchData = {
             method: 'POST',
             body: JSON.stringify(temp),
             headers: {
@@ -188,8 +187,8 @@ export function finishedFail () {
   Workingobjekt.appendChild(UI.label('Wrong answer 🙁'))
   Workingobjekt.appendChild(UI.label('better Luck next time 🍀'))
   Workingobjekt.appendChild(UI.label('Wanna play again?'))
-  let buttonPlay = UI.button('Play again 😎')
-  let buttonMenu = UI.button('Main Menu 🖥')
+  const buttonPlay = UI.button('Play again 😎')
+  const buttonMenu = UI.button('Main Menu 🖥')
 
   Workingobjekt.appendChild(buttonPlay)
   Workingobjekt.appendChild(buttonMenu)
@@ -216,8 +215,8 @@ function finishedSucces () {
   cookieSave(User.name, User.score)
 
   Workingobjekt.appendChild(UI.label('Wanna play again?'))
-  let buttonPlay = UI.button('Play again 😎')
-  let buttonMenu = UI.button('Main Menu 🖥')
+  const buttonPlay = UI.button('Play again 😎')
+  const buttonMenu = UI.button('Main Menu 🖥')
 
   Workingobjekt.appendChild(buttonPlay)
   Workingobjekt.appendChild(buttonMenu)

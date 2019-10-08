@@ -1,8 +1,8 @@
 export function cookieSave (name, points) {
-  let cookie = cookieLoad()
+  const cookie = cookieLoad()
   document.cookie = ''
 
-  let temp = new Object()
+  const temp = new Object()
   temp.name = name
   temp.points = points
 
@@ -26,7 +26,7 @@ export function cookieSave (name, points) {
  * returns an array with Objects, including the data from the cookie
  */
 export function cookieLoad () {
-  let arr = []
+  const arr = []
 
   if (document.cookie.length === 0) {
     return arr
@@ -34,7 +34,7 @@ export function cookieLoad () {
   let cookie = document.cookie
   cookie = cookie.split('-')
   for (let i = 0; i < cookie.length; i++) {
-    let temp = new Object()
+    const temp = new Object()
 
     const string = cookie[i].split(',')
     temp.name = string[0]
