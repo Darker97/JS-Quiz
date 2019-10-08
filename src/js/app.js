@@ -6,7 +6,7 @@ import { Timer, TimerStop } from './timer.js'
 /* -------------------------- */
 var Workingobjekt = UI.view()
 var User
-var questionObjekt = new Object()
+var questionObjekt = {}
 /* -------------------------- */
 
 /* -------------------------- */
@@ -96,7 +96,7 @@ function Phase3 () {
         // Button is clicked, we continue
         button.addEventListener('click', function () {
           // ___________________________ => start of answer
-          const temp = new Object()
+          const temp = {}
           temp.answer = input.value
 
           const fetchData = {
@@ -140,7 +140,7 @@ function Phase3 () {
         // Button is clicked, we continue
         button.addEventListener('click', function () {
           // ___________________________ => start of answer
-          const temp = new Object()
+          const temp = {}
           temp.answer = input.value
 
           const fetchData = {
